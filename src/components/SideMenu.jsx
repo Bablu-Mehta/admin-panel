@@ -16,6 +16,7 @@ import Toolbar from "@mui/material/Toolbar";
 import PersonIcon from "@mui/icons-material/Person";
 import PersonAddIcon from "@mui/icons-material/PersonAdd";
 import LogoutIcon from "@mui/icons-material/Logout";
+import { Link } from "react-router-dom";
 
 const drawerWidth = 240;
 
@@ -44,29 +45,41 @@ function SideMenu(props) {
       <Toolbar />
       <Divider />
       <List>
-        {["Users", "Add User"].map((text, index) => (
-          <ListItem key={text} disablePadding>
+        <Link>
+          <ListItem disablePadding>
             <ListItemButton>
               <ListItemIcon>
-                {index % 2 === 0 ? <PersonIcon /> : <PersonAddIcon />}
+                <PersonIcon />
               </ListItemIcon>
-              <ListItemText primary={text} />
+              <ListItemText primary={"Users"} />
             </ListItemButton>
           </ListItem>
-        ))}
+        </Link>
+
+        <Link>
+          <ListItem disablePadding>
+            <ListItemButton>
+              <ListItemIcon>
+                <PersonAddIcon />
+              </ListItemIcon>
+              <ListItemText primary={"Add User"} />
+            </ListItemButton>
+          </ListItem>
+        </Link>
       </List>
+
       <Divider />
       <List>
-        {["Logout"].map((text, index) => (
-          <ListItem key={text} disablePadding>
+        <Link>
+          <ListItem disablePadding>
             <ListItemButton>
               <ListItemIcon>
                 <LogoutIcon />
               </ListItemIcon>
-              <ListItemText primary={text} />
+              <ListItemText primary={"Logout"} />
             </ListItemButton>
           </ListItem>
-        ))}
+        </Link>
       </List>
     </div>
   );
