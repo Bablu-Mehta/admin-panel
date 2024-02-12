@@ -19,6 +19,9 @@ import LogoutIcon from "@mui/icons-material/Logout";
 import { Link } from "react-router-dom";
 import { Typography } from "@mui/material";
 import HomeIcon from "@mui/icons-material/Home";
+import { useDispatch } from "react-redux";
+
+import { authActions } from "../store/store";
 
 const drawerWidth = 240;
 
@@ -26,6 +29,8 @@ function SideMenu(props) {
   const { window, children } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const [isClosing, setIsClosing] = React.useState(false);
+
+  const dispatch = useDispatch();
 
   const handleDrawerClose = () => {
     setIsClosing(true);
@@ -40,6 +45,10 @@ function SideMenu(props) {
     if (!isClosing) {
       setMobileOpen(!mobileOpen);
     }
+  };
+
+  const handleLogout = () => {
+    dispatch(authActions.logout());
   };
 
   const drawer = (
@@ -82,16 +91,14 @@ function SideMenu(props) {
 
       <Divider />
       <List>
-        <Link>
-          <ListItem disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                <LogoutIcon />
-              </ListItemIcon>
-              <ListItemText primary={"Logout"} />
-            </ListItemButton>
-          </ListItem>
-        </Link>
+        <ListItem disablePadding>
+          <ListItemButton onClick={handleLogout}>
+            <ListItemIcon>
+              <LogoutIcon />
+            </ListItemIcon>
+            <ListItemText primary={"Logout"} />
+          </ListItemButton>
+        </ListItem>
       </List>
     </div>
   );

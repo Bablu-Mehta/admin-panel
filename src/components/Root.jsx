@@ -2,14 +2,22 @@ import React from "react";
 import classes from "./Root.module.css";
 import { Outlet } from "react-router-dom";
 import SideMenu from "./SideMenu";
+import { useSelector } from "react-redux";
+import Auth from "./Auth";
 const Root = () => {
+  const auth = useSelector((state) => state.isAuth);
   return (
-    <div className={classes.container}>
-      <SideMenu />
-      <div className={classes.outlet}>
-        <Outlet />
-      </div>
-    </div>
+    <>
+      {!auth && <Auth />}
+      {auth && (
+        <div className={classes.container}>
+          <SideMenu />
+          <div className={classes.outlet}>
+            <Outlet />
+          </div>
+        </div>
+      )}
+    </>
   );
 };
 
