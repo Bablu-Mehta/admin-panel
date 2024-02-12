@@ -17,6 +17,7 @@ import PersonIcon from "@mui/icons-material/Person";
 import PersonAddIcon from "@mui/icons-material/PersonAdd";
 import LogoutIcon from "@mui/icons-material/Logout";
 import { Link } from "react-router-dom";
+import { Typography } from "@mui/material";
 
 const drawerWidth = 240;
 
@@ -108,6 +109,14 @@ function SideMenu(props) {
           >
             <MenuIcon />
           </IconButton>
+          <Typography
+            variant="h4"
+            component="div"
+            align="center"
+            sx={{ flexGrow: 1 }}
+          >
+            Admin Panel
+          </Typography>
         </Toolbar>
       </AppBar>
       <Box
