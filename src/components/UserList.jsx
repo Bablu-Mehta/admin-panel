@@ -28,13 +28,16 @@ const UserList = () => {
             <TableCell>Name</TableCell>
             <TableCell align="right">UserName</TableCell>
             <TableCell align="right">Email</TableCell>
+            <TableCell align="left">Actions</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {rows.map((row) => (
             <TableRow
               key={row.name}
-              sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+              sx={{
+                "&:last-child td, &:last-child th": { border: 0 },
+              }}
             >
               <TableCell component="th" scope="row">
                 {row.name}

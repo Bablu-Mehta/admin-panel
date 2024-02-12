@@ -18,6 +18,7 @@ import PersonAddIcon from "@mui/icons-material/PersonAdd";
 import LogoutIcon from "@mui/icons-material/Logout";
 import { Link } from "react-router-dom";
 import { Typography } from "@mui/material";
+import HomeIcon from "@mui/icons-material/Home";
 
 const drawerWidth = 240;
 
@@ -46,6 +47,16 @@ function SideMenu(props) {
       <Toolbar />
       <Divider />
       <List>
+        <Link to="/">
+          <ListItem disablePadding>
+            <ListItemButton>
+              <ListItemIcon>
+                <HomeIcon />
+              </ListItemIcon>
+              <ListItemText primary={"Home"} />
+            </ListItemButton>
+          </ListItem>
+        </Link>
         <Link to="/users">
           <ListItem disablePadding>
             <ListItemButton>
@@ -167,8 +178,16 @@ function SideMenu(props) {
         }}
       >
         <Toolbar />
-
-        {children}
+        <Box
+          component="center"
+          sx={{
+            flexGrow: 1,
+            p: 3,
+            width: { sm: `calc(100% - ${drawerWidth}px)` },
+          }}
+        >
+          {children}
+        </Box>
       </Box>
     </Box>
   );

@@ -3,12 +3,14 @@ import "./App.css";
 import Root from "./components/Root";
 import UserList from "./components/UserList";
 import CreateUser from "./components/CreateUser";
+import Home from "./components/Home";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Root />,
     children: [
+      { index: true, element: <Home /> },
       { path: "users", element: <UserList /> },
       { path: "add-user", element: <CreateUser /> },
     ],
