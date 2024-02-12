@@ -1,10 +1,11 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
+import SideMenu from "./SideMenu";
 
 const Root = () => {
   return (
     <>
-      <div>Root</div>
+      <SideMenu />
       <Outlet />
     </>
   );
