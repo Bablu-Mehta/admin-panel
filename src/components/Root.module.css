@@ -1,0 +1,15 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.outlet {
+  display: flex;
+  justify-content: center;
+  /* background-color: red; */
+  width: 100%;
+  margin-top: 100px;
+  /* height: 600px; */
+  padding: 30px;
+}

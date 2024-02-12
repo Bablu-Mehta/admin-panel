@@ -1,14 +1,15 @@
 import React from "react";
+import classes from "./Root.module.css";
 import { Outlet } from "react-router-dom";
 import SideMenu from "./SideMenu";
-
 const Root = () => {
   return (
-    <>
-      <SideMenu>
+    <div className={classes.container}>
+      <SideMenu />
+      <div className={classes.outlet}>
         <Outlet />
-      </SideMenu>
-    </>
+      </div>
+    </div>
   );
 };
 

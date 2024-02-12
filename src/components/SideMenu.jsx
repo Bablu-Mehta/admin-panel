@@ -176,19 +176,7 @@ function SideMenu(props) {
           p: 3,
           width: { sm: `calc(100% - ${drawerWidth}px)` },
         }}
-      >
-        <Toolbar />
-        <Box
-          component="center"
-          sx={{
-            flexGrow: 1,
-            p: 3,
-            width: { sm: `calc(100% - ${drawerWidth}px)` },
-          }}
-        >
-          {children}
-        </Box>
-      </Box>
+      ></Box>
     </Box>
   );
 }
