@@ -5,8 +5,9 @@ import SideMenu from "./SideMenu";
 const Root = () => {
   return (
     <>
-      <SideMenu />
-      <Outlet />
+      <SideMenu>
+        <Outlet />
+      </SideMenu>
     </>
   );
 };
