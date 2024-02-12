@@ -45,7 +45,7 @@ function SideMenu(props) {
       <Toolbar />
       <Divider />
       <List>
-        <Link>
+        <Link to="/users">
           <ListItem disablePadding>
             <ListItemButton>
               <ListItemIcon>
@@ -56,7 +56,7 @@ function SideMenu(props) {
           </ListItem>
         </Link>
 
-        <Link>
+        <Link to="/add-user">
           <ListItem disablePadding>
             <ListItemButton>
               <ListItemIcon>
@@ -157,7 +157,7 @@ function SideMenu(props) {
           width: { sm: `calc(100% - ${drawerWidth}px)` },
         }}
       >
-        {/* <Toolbar /> */}
+        <Toolbar />
 
         {children}
       </Box>
