@@ -9,6 +9,7 @@ import Paper from "@mui/material/Paper";
 import { Button, Stack } from "@mui/material";
 import { deleteUser, fetchUser } from "../util/http";
 import { redirect } from "react-router-dom";
+import Loader from "./Loader";
 
 // function createData(name, userName, email) {
 //   return { name, userName, email };
@@ -48,7 +49,7 @@ const UserList = () => {
 
   return (
     <div>
-      {isLoading && <p>Users Data Fetching...</p>}
+      {isLoading && <Loader />}
       {users && (
         <TableContainer component={Paper}>
           <Table sx={{ minWidth: 650 }} aria-label="simple table">
