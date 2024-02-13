@@ -6,10 +6,11 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import { Button, Stack } from "@mui/material";
+import { Button, Stack, Typography } from "@mui/material";
 import { deleteUser, fetchUser } from "../util/http";
-import { redirect } from "react-router-dom";
+// import { redirect } from "react-router-dom";
 import Loader from "./Loader";
+import ModalUI from "../UI/ModalUI";
 
 // function createData(name, userName, email) {
 //   return { name, userName, email };
@@ -26,6 +27,7 @@ const UserList = () => {
   const [users, setUsers] = useState();
   const [isLoading, setIsLoading] = useState(false);
   const [isUpdated, setIsUpdated] = useState(false);
+  
 
   useEffect(() => {
     const fetchedData = async () => {
@@ -49,6 +51,7 @@ const UserList = () => {
 
   return (
     <div>
+      <ModalUI onOpen={true} onClose={}>hi there</ModalUI>
       {isLoading && <Loader />}
       {users && (
         <TableContainer component={Paper}>

@@ -1,28 +1,9 @@
 import { configureStore, createSlice } from "@reduxjs/toolkit";
-
-const initialAuthState = {
-  admin: "admin@gmail.com",
-  isAuth: false,
-};
-
-const authSlice = createSlice({
-  name: "auth",
-  initialState: initialAuthState,
-  reducers: {
-    login(state, action) {
-      if (action.payload === state.admin) {
-        state.isAuth = true;
-      }
-    },
-    logout(state) {
-      state.isAuth = false;
-    },
-  },
-});
+import modalReducer from "./modal-slice";
+import authReducer from "./auth-slice";
 
 const store = configureStore({
-  reducer: authSlice.reducer,
+  reducer: { auth: authReducer, modal: modalReducer },
 });
 
-export const authActions = authSlice.actions;
 export default store;
