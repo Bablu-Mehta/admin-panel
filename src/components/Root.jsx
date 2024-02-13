@@ -5,10 +5,10 @@ import SideMenu from "./SideMenu";
 import { useSelector } from "react-redux";
 import Auth from "./Auth";
 const Root = () => {
-  const auth = useSelector((state) => state.isAuth);
+  // const auth = useSelector((state) => state.isAuth);
   return (
     <>
-      {!auth && <Auth />}
+      {/* {!auth && <Auth />}
       {auth && (
         <div className={classes.container}>
           <SideMenu />
@@ -16,7 +16,14 @@ const Root = () => {
             <Outlet />
           </div>
         </div>
-      )}
+      )} */}
+
+      <div className={classes.container}>
+        <SideMenu />
+        <div className={classes.outlet}>
+          <Outlet />
+        </div>
+      </div>
     </>
   );
 };

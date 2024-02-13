@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { authActions } from "../store/store";
+import classes from "./Auth.module.css";
 
 const Auth = () => {
   const [admin, setAdmin] = useState();
@@ -9,7 +10,9 @@ const Auth = () => {
     dispatch(authActions.login(admin));
   };
   return (
-    <div>
+    <div className={classes.container}>
+      <h3>Welcome to Admin Panel</h3>
+      <p>Please Login</p>
       <input
         placeholder="enter email"
         onChange={(e) => setAdmin(e.target.value)}
