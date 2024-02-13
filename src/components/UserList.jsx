@@ -7,7 +7,8 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { Button, Stack } from "@mui/material";
-import { fetchUser } from "../util/http";
+import { deleteUser, fetchUser } from "../util/http";
+import { redirect } from "react-router-dom";
 
 // function createData(name, userName, email) {
 //   return { name, userName, email };
@@ -23,6 +24,7 @@ import { fetchUser } from "../util/http";
 const UserList = () => {
   const [users, setUsers] = useState();
   const [isLoading, setIsLoading] = useState(false);
+  const [isUpdated, setIsUpdated] = useState(false);
 
   useEffect(() => {
     const fetchedData = async () => {
@@ -33,7 +35,14 @@ const UserList = () => {
     };
 
     fetchedData();
-  }, []);
+  }, [isUpdated]);
+
+  const handleDelete = async (id) => {
+    const response = await deleteUser("http://localhost:3000/", id);
+    // console.log(response);
+    setIsUpdated((prev) => !prev);
+    // redirect("/users");
+  };
 
   // console.log(users);
 
@@ -69,7 +78,11 @@ const UserList = () => {
                       <Button variant="contained" color="success">
                         Edit
                       </Button>
-                      <Button variant="outlined" color="error">
+                      <Button
+                        variant="outlined"
+                        color="error"
+                        onClick={() => handleDelete(user.id)}
+                      >
                         Delete
                       </Button>
                     </Stack>
