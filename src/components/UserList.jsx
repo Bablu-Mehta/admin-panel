@@ -1,13 +1,6 @@
 import React, { useEffect, useState } from "react";
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableCell from "@mui/material/TableCell";
-import TableContainer from "@mui/material/TableContainer";
-import TableHead from "@mui/material/TableHead";
-import TableRow from "@mui/material/TableRow";
 import Typography from "@mui/material/Typography";
-import Paper from "@mui/material/Paper";
-import { Button, Stack } from "@mui/material";
+import { Button } from "@mui/material";
 import { deleteUser, fetchUser } from "../util/http";
 // import { redirect } from "react-router-dom";
 import Loader from "./Loader";
@@ -69,18 +62,18 @@ const UserList = () => {
     dispatch(modalActions.closeModal());
   };
 
-  console.log("user", users);
+  // console.log("user", users);
 
   // console.log(users);
 
   return (
     <div>
-      <ModalUI onOpen={open} onClose={close}>
+      <ModalUI isOpen={open} onClose={close}>
         <Typography id="modal-modal-title" variant="h6" component="h2">
           Are You Sure!!!
         </Typography>
-        <Button onClick={handleCancelDelete}>Cancel</Button>
-        <Button onClick={handleConfirmation}>Okay</Button>
+        <Button onClick={handleCancelDelete}>No</Button>
+        <Button onClick={handleConfirmation}>Yes</Button>
       </ModalUI>
       {isLoading && <Loader />}
       {users && (

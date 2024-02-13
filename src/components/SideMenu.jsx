@@ -23,7 +23,7 @@ import { useDispatch } from "react-redux";
 
 import { authActions } from "../store/auth-slice";
 
-const drawerWidth = 240;
+const drawerWidth = 220;
 
 function SideMenu(props) {
   const { window, children } = props;

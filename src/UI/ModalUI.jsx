@@ -1,5 +1,5 @@
 import { Box } from "@mui/material";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Modal from "@mui/material/Modal";
 const style = {
   position: "absolute",
@@ -13,11 +13,20 @@ const style = {
   p: 4,
 };
 
-const ModalUI = ({ children, onOpen, onClose }) => {
+const ModalUI = ({ children, isOpen, onClose }) => {
+  const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    setOpen(isOpen);
+  }, [isOpen, onClose]);
+
+  const handleClose = () => {
+    setOpen(onClose);
+  };
   return (
     <Modal
-      open={onOpen}
-      onClose={onClose}
+      open={open}
+      onClose={handleClose}
       aria-labelledby="modal-modal-title"
       aria-describedby="modal-modal-description"
     >

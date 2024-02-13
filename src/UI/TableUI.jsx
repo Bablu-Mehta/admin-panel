@@ -76,24 +76,23 @@ const TableUI = ({ data, rowLenght, onDelete }) => {
                           </>
                         );
                       })}
-                      <TableRow>
-                        <TableCell
-                          style={{ backgroundColor: "#fff", color: "black" }}
-                        >
-                          <Stack direction="row" spacing={2}>
-                            <Button variant="contained" color="success">
-                              Edit
-                            </Button>
-                            <Button
-                              variant="contained"
-                              color="error"
-                              onClick={() => onDelete(row.id)}
-                            >
-                              Delete
-                            </Button>
-                          </Stack>
-                        </TableCell>
-                      </TableRow>
+
+                      <TableCell
+                        style={{ backgroundColor: "#fff", color: "black" }}
+                      >
+                        <Stack direction="row" spacing={2}>
+                          <Button variant="contained" color="success">
+                            Edit
+                          </Button>
+                          <Button
+                            variant="contained"
+                            color="error"
+                            onClick={() => onDelete(row.id)}
+                          >
+                            Delete
+                          </Button>
+                        </Stack>
+                      </TableCell>
                     </TableRow>
                   );
                 })}
