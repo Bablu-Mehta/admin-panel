@@ -14,6 +14,8 @@ import Loader from "./Loader";
 import ModalUI from "../UI/ModalUI";
 import { useDispatch, useSelector } from "react-redux";
 import { modalActions } from "../store/modal-slice";
+import TableUI from "../UI/TableUI";
+import { redirect } from "react-router-dom";
 
 // function createData(name, userName, email) {
 //   return { name, userName, email };
@@ -39,7 +41,7 @@ const UserList = () => {
   useEffect(() => {
     const fetchedData = async () => {
       setIsLoading(true);
-      const users = await fetchUser("http://localhost:3000/");
+      const users = await fetchUser();
       setUsers(users);
       setIsLoading(false);
     };
@@ -55,6 +57,7 @@ const UserList = () => {
     }
     setUserIdDelete(null);
     dispatch(modalActions.closeModal());
+    return redirect("/users");
   };
 
   const handleDelete = async (id) => {
@@ -65,6 +68,8 @@ const UserList = () => {
   const handleCancelDelete = () => {
     dispatch(modalActions.closeModal());
   };
+
+  console.log("user", users);
 
   // console.log(users);
 
@@ -79,48 +84,54 @@ const UserList = () => {
       </ModalUI>
       {isLoading && <Loader />}
       {users && (
-        <TableContainer component={Paper}>
-          <Table sx={{ minWidth: 650 }} aria-label="simple table">
-            <TableHead>
-              <TableRow>
-                <TableCell>Name</TableCell>
-                <TableCell align="right">UserName</TableCell>
-                <TableCell align="right">Email</TableCell>
-                <TableCell align="left">Actions</TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {users.map((user) => (
-                <TableRow
-                  key={user.id}
-                  sx={{
-                    "&:last-child td, &:last-child th": { border: 0 },
-                  }}
-                >
-                  <TableCell component="th" scope="row">
-                    {user.name}
-                  </TableCell>
-                  <TableCell align="right">{user.username}</TableCell>
-                  <TableCell align="right">{user.email}</TableCell>
-                  <TableCell align="right">
-                    <Stack direction="row" spacing={2}>
-                      <Button variant="contained" color="success">
-                        Edit
-                      </Button>
-                      <Button
-                        variant="outlined"
-                        color="error"
-                        onClick={() => handleDelete(user.id)}
-                      >
-                        Delete
-                      </Button>
-                    </Stack>
-                  </TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </TableContainer>
+        <TableUI
+          key={isUpdated}
+          data={users}
+          rowLenght={users.length}
+          onDelete={handleDelete}
+        />
+        // <TableContainer component={Paper}>
+        //   <Table sx={{ minWidth: 650 }} aria-label="simple table">
+        //     <TableHead>
+        //       <TableRow>
+        //         <TableCell>Name</TableCell>
+        //         <TableCell align="right">UserName</TableCell>
+        //         <TableCell align="right">Email</TableCell>
+        //         <TableCell align="left">Actions</TableCell>
+        //       </TableRow>
+        //     </TableHead>
+        //     <TableBody>
+        //       {users.map((user) => (
+        //         <TableRow
+        //           key={user.id}
+        //           sx={{
+        //             "&:last-child td, &:last-child th": { border: 0 },
+        //           }}
+        //         >
+        //           <TableCell component="th" scope="row">
+        //             {user.name}
+        //           </TableCell>
+        //           <TableCell align="right">{user.username}</TableCell>
+        //           <TableCell align="right">{user.email}</TableCell>
+        //           <TableCell align="right">
+        //             <Stack direction="row" spacing={2}>
+        //               <Button variant="contained" color="success">
+        //                 Edit
+        //               </Button>
+        //               <Button
+        //                 variant="outlined"
+        //                 color="error"
+        //                 onClick={() => handleDelete(user.id)}
+        //               >
+        //                 Delete
+        //               </Button>
+        //             </Stack>
+        //           </TableCell>
+        //         </TableRow>
+        //       ))}
+        //     </TableBody>
+        //   </Table>
+        // </TableContainer>
       )}
     </div>
   );

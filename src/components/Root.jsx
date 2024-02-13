@@ -19,8 +19,11 @@ const Root = () => {
       )} */}
 
       <div className={classes.container}>
-        <SideMenu />
-        <div className={classes.outlet}>
+        <div className={classes.left}>
+          <SideMenu />
+        </div>
+
+        <div className={classes.right}>
           <Outlet />
         </div>
       </div>

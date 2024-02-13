@@ -2,9 +2,11 @@ import axios from "axios";
 
 // const url = "http://localhost:3000/";
 
-export const fetchUser = async (url) => {
+const BASE_URL = "http://localhost:3000/";
+
+export const fetchUser = async () => {
   try {
-    const response = await axios(url);
+    const response = await axios(BASE_URL);
     return response.data;
   } catch (error) {
     throw new Error({
@@ -14,9 +16,8 @@ export const fetchUser = async (url) => {
 };
 
 export const deleteUser = async (id) => {
-  const baseUrl = "http://localhost:3000/";
   try {
-    const response = await axios.delete(baseUrl + id);
+    const response = await axios.delete(BASE_URL + id);
     return response;
   } catch (error) {
     throw new Error({
