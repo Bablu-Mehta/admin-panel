@@ -13,9 +13,10 @@ export const fetchUser = async (url) => {
   }
 };
 
-export const deleteUser = async (url, id) => {
+export const deleteUser = async (id) => {
+  const baseUrl = "http://localhost:3000/";
   try {
-    const response = await axios.delete(url + id);
+    const response = await axios.delete(baseUrl + id);
     return response;
   } catch (error) {
     throw new Error({

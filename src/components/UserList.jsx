@@ -38,7 +38,7 @@ const UserList = () => {
   }, [isUpdated]);
 
   const handleDelete = async (id) => {
-    const response = await deleteUser("http://localhost:3000/", id);
+    const response = await deleteUser(id);
     // console.log(response);
     setIsUpdated((prev) => !prev);
     // redirect("/users");
