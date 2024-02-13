@@ -5,12 +5,15 @@ import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
+import Typography from "@mui/material/Typography";
 import Paper from "@mui/material/Paper";
-import { Button, Stack, Typography } from "@mui/material";
+import { Button, Stack } from "@mui/material";
 import { deleteUser, fetchUser } from "../util/http";
 // import { redirect } from "react-router-dom";
 import Loader from "./Loader";
 import ModalUI from "../UI/ModalUI";
+import { useDispatch, useSelector } from "react-redux";
+import { modalActions } from "../store/modal-slice";
 
 // function createData(name, userName, email) {
 //   return { name, userName, email };
@@ -27,7 +30,11 @@ const UserList = () => {
   const [users, setUsers] = useState();
   const [isLoading, setIsLoading] = useState(false);
   const [isUpdated, setIsUpdated] = useState(false);
-  
+  const [userIdToDelete, setUserIdDelete] = useState(null);
+
+  const open = useSelector((state) => state.modal.isOpen);
+  const close = useSelector((state) => state.modal.isClose);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const fetchedData = async () => {
@@ -40,18 +47,36 @@ const UserList = () => {
     fetchedData();
   }, [isUpdated]);
 
+  const handleConfirmation = async () => {
+    if (userIdToDelete) {
+      // console.log("user id to delete", userIdToDelete);
+      const response = await deleteUser(userIdToDelete);
+      setIsUpdated((prev) => !prev);
+    }
+    setUserIdDelete(null);
+    dispatch(modalActions.closeModal());
+  };
+
   const handleDelete = async (id) => {
-    const response = await deleteUser(id);
-    // console.log(response);
-    setIsUpdated((prev) => !prev);
-    // redirect("/users");
+    setUserIdDelete(id);
+    dispatch(modalActions.openModal());
+  };
+
+  const handleCancelDelete = () => {
+    dispatch(modalActions.closeModal());
   };
 
   // console.log(users);
 
   return (
     <div>
-      <ModalUI onOpen={true} onClose={}>hi there</ModalUI>
+      <ModalUI onOpen={open} onClose={close}>
+        <Typography id="modal-modal-title" variant="h6" component="h2">
+          Are You Sure!!!
+        </Typography>
+        <Button onClick={handleCancelDelete}>Cancel</Button>
+        <Button onClick={handleConfirmation}>Okay</Button>
+      </ModalUI>
       {isLoading && <Loader />}
       {users && (
         <TableContainer component={Paper}>

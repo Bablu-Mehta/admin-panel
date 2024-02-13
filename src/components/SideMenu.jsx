@@ -21,7 +21,7 @@ import { Typography } from "@mui/material";
 import HomeIcon from "@mui/icons-material/Home";
 import { useDispatch } from "react-redux";
 
-import { authActions } from "../store/store";
+import { authActions } from "../store/auth-slice";
 
 const drawerWidth = 240;
 
