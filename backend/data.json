@@ -2,16 +2,19 @@
   {
     "id": 70,
     "name": "againNewUser234",
+    "username": "dummy",
     "email": "againnewuser567@gamil.com"
   },
   {
     "id": 26,
     "name": "Hey234567",
+    "username": "dummy",
     "email": "hy@gmailc.om"
   },
   {
     "id": 56,
     "name": "asd",
+    "username": "dummy",
     "email": "assaaa@as.com"
   }
 ]
