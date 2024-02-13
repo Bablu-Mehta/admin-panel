@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Typography from "@mui/material/Typography";
-import { Button } from "@mui/material";
+import { Button, Stack } from "@mui/material";
 import { deleteUser, fetchUser } from "../util/http";
 // import { redirect } from "react-router-dom";
 import Loader from "./Loader";
@@ -28,7 +28,7 @@ const UserList = () => {
   const [userIdToDelete, setUserIdDelete] = useState(null);
 
   const open = useSelector((state) => state.modal.isOpen);
-  const close = useSelector((state) => state.modal.isClose);
+  // const close = useSelector((state) => state.modal.isClose);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -68,12 +68,31 @@ const UserList = () => {
 
   return (
     <div>
-      <ModalUI isOpen={open} onClose={close}>
-        <Typography id="modal-modal-title" variant="h6" component="h2">
+      <ModalUI isOpen={open} onClose={handleCancelDelete}>
+        <Typography
+          sx={{ padding: "25px 0" }}
+          id="modal-modal-title"
+          variant="h6"
+          component="h2"
+        >
           Are You Sure!!!
         </Typography>
-        <Button onClick={handleCancelDelete}>No</Button>
-        <Button onClick={handleConfirmation}>Yes</Button>
+        <Stack direction="row" spacing={2}>
+          <Button
+            variant="outlined"
+            color="success"
+            onClick={handleCancelDelete}
+          >
+            No
+          </Button>
+          <Button
+            variant="contained"
+            color="error"
+            onClick={handleConfirmation}
+          >
+            Yes
+          </Button>
+        </Stack>
       </ModalUI>
       {isLoading && <Loader />}
       {users && (

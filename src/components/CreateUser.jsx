@@ -3,7 +3,8 @@ import ModalUI from "../UI/ModalUI";
 import { useDispatch, useSelector } from "react-redux";
 import { Button } from "@mui/base";
 import { modalActions } from "../store/modal-slice";
-import { redirect } from "react-router-dom";
+// import { redirect } from "react-router-dom";
+import { Stack } from "@mui/material";
 
 const CreateUser = () => {
   const open = useSelector((state) => state.modal.isOpen);
@@ -24,15 +25,20 @@ const CreateUser = () => {
   // };
 
   const handleSubmit = (event) => {
-    event.preventDefault();
-    console.log("Form submitted successfully", event);
+    // event.preventDefault();
+    // console.log("Form submitted successfully", event);
     dispatch(modalActions.closeModal());
-    return redirect("/users");
+    // return redirect("/users");
   };
 
   return (
     <ModalUI isOpen={open} onClose={close}>
-      
+      <Stack>
+        <Button variant="contained" onClick={handleSubmit}>
+          close
+        </Button>
+      </Stack>
+      {/* <button>close</button>   */}
     </ModalUI>
   );
 };
