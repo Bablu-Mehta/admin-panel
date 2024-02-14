@@ -1,9 +1,10 @@
 import React from "react";
+import classes from "./Home.module.css";
 
 const Home = () => {
   return (
-    <div>
-      <h1>Welcome to Admin Panel</h1>
+    <div className={classes.container}>
+      <h1>Welcome to Admin Panel's Home Page</h1>
     </div>
   );
 };

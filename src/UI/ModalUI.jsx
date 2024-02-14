@@ -7,9 +7,9 @@ const style = {
   left: "50%",
   transform: "translate(-50%, -50%)",
   bgcolor: "background.paper",
-  border: "1px solid red",
+  border: "1px solid grey",
   boxShadow: 24,
-  p: 4,
+  p: 6,
   borderRadius: "15px",
 };
 

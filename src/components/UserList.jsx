@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { modalActions } from "../store/modal-slice";
 import TableUI from "../UI/TableUI";
 import { Outlet, redirect } from "react-router-dom";
+import classes from "./UserList.module.css";
 
 // function createData(name, userName, email) {
 //   return { name, userName, email };
@@ -67,7 +68,7 @@ const UserList = () => {
   // console.log(users);
 
   return (
-    <div>
+    <div className={classes.container}>
       <ModalUI isOpen={open} onClose={handleCancelDelete}>
         <Typography
           sx={{ padding: "25px 0" }}
