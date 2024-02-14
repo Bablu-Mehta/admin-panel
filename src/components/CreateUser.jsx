@@ -20,6 +20,7 @@ const CreateUser = () => {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm({
     resolver: yupResolver(schema),
   });
@@ -44,6 +45,7 @@ const CreateUser = () => {
     // dispatch(modalActions.closeModal());
     console.log(data);
     // return redirect("/users");
+    reset();
   };
 
   return (
