@@ -25,3 +25,14 @@ export const deleteUser = async (id) => {
     });
   }
 };
+
+export const creatingUser = async (data) => {
+  try {
+    const response = await axios.post(BASE_URL, data);
+    return response.data;
+  } catch (error) {
+    throw new Error({
+      message: error || "Something Went Wrong while fetching the Data.",
+    });
+  }
+};

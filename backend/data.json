@@ -82,5 +82,11 @@
     "name": "againNewUser234",
     "username": "dummy1",
     "email": "againnewuser567@gamil.com"
+  },
+  {
+    "name": "new user",
+    "username": "usernew123",
+    "email": "newuser@gmail.com",
+    "id": 37
   }
 ]

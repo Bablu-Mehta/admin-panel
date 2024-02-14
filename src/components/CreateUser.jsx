@@ -11,10 +11,10 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { schema } from "../util/validation";
 
 import classes from "./CreateUser.module.css";
+import { creatingUser } from "../util/http";
 
 const CreateUser = () => {
   const open = useSelector((state) => state.modal.isOpen);
-  const close = useSelector((state) => state.modal.isClose);
 
   const {
     register,
@@ -38,8 +38,11 @@ const CreateUser = () => {
     dispatch(modalActions.closeModal());
   };
 
-  const handleFormSubmission = (data) => {
+  const handleFormSubmission = async (data) => {
+    data.id = Math.ceil(Math.random() * 100);
     console.log(data);
+    const response = await creatingUser(data);
+    console.log("user created successfully", response);
     reset();
     dispatch(modalActions.closeModal());
   };
