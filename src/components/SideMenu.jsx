@@ -49,6 +49,7 @@ function SideMenu(props) {
 
   const handleLogout = () => {
     dispatch(authActions.logout());
+    localStorage.removeItem("admin");
   };
 
   const drawer = (
