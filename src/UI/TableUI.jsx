@@ -12,6 +12,7 @@ import {
 } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { fetchUser } from "../util/http";
+import { Link } from "react-router-dom";
 
 const TableUI = ({ data, rowLenght, onDelete }) => {
   const headers = [
@@ -81,9 +82,11 @@ const TableUI = ({ data, rowLenght, onDelete }) => {
                         style={{ backgroundColor: "#fff", color: "black" }}
                       >
                         <Stack direction="row" spacing={2}>
-                          <Button variant="contained" color="success">
-                            Edit
-                          </Button>
+                          <Link to={`/users/${row.id}`}>
+                            <Button variant="contained" color="success">
+                              Edit
+                            </Button>
+                          </Link>
                           <Button
                             variant="contained"
                             color="error"

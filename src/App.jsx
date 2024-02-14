@@ -4,6 +4,7 @@ import UserList from "./components/UserList";
 import CreateUser from "./components/CreateUser";
 import Home from "./components/Home";
 import Root from "./components/Root";
+import UpdateUser from "./components/UpdateUser";
 
 const router = createBrowserRouter([
   {
@@ -14,7 +15,10 @@ const router = createBrowserRouter([
       {
         path: "users",
         element: <UserList />,
-        children: [{ path: "add-user", element: <CreateUser /> }],
+        children: [
+          { path: "add-user", element: <CreateUser /> },
+          { path: ":id", element: <UpdateUser /> },
+        ],
       },
     ],
   },
