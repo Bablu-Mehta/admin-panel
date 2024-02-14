@@ -36,3 +36,15 @@ export const creatingUser = async (data) => {
     });
   }
 };
+
+
+export const fetchSingleUser = async (id) => {
+  try {
+    const response = await axios(BASE_URL+id);
+    return response.data;
+  } catch (error) {
+    throw new Error({
+      message: error || "Something Went Wrong while fetching the Data.",
+    });
+  }
+};
