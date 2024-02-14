@@ -62,7 +62,7 @@ const TableUI = ({ data, rowLenght, onDelete }) => {
     <div style={{ textAlign: "center" }}>
       <h2>Users List</h2>
 
-      {/* Search input field */}
+      
       <TextField
         label="Search"
         variant="standard"

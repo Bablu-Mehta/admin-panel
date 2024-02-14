@@ -24,11 +24,11 @@ import { Outlet, redirect } from "react-router-dom";
 const UserList = () => {
   const [users, setUsers] = useState();
   const [isLoading, setIsLoading] = useState(false);
-  const [isUpdated, setIsUpdated] = useState(false);
+  // const [isUpdated, setIsUpdated] = useState(false);
   const [userIdToDelete, setUserIdDelete] = useState(null);
 
   const open = useSelector((state) => state.modal.isOpen);
-  // const close = useSelector((state) => state.modal.isClose);
+  const close = useSelector((state) => state.modal.isClose);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -40,13 +40,13 @@ const UserList = () => {
     };
 
     fetchedData();
-  }, [isUpdated, open]);
+  }, [close]);
 
   const handleConfirmation = async () => {
     if (userIdToDelete) {
       // console.log("user id to delete", userIdToDelete);
       const response = await deleteUser(userIdToDelete);
-      setIsUpdated((prev) => !prev);
+      // setIsUpdated((prev) => !prev);
     }
     setUserIdDelete(null);
     dispatch(modalActions.closeModal());
@@ -97,7 +97,7 @@ const UserList = () => {
       {isLoading && <Loader />}
       {users && (
         <TableUI
-          key={isUpdated}
+          key={close}
           data={users}
           rowLenght={users.length}
           onDelete={handleDelete}

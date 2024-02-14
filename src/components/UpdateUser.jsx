@@ -36,7 +36,7 @@ const UpdateUser = () => {
   useEffect(() => {
     const fetchUser = async () => {
       const response = await fetchSingleUser(params.id);
-    //   console.log(response);
+      //   console.log(response);
       setUser(response);
     };
     fetchUser();
@@ -44,7 +44,7 @@ const UpdateUser = () => {
 
   const handleCancelUpdate = () => {
     dispatch(modalActions.closeModal());
-    navigate("/users");
+    navigate("..");
   };
 
   const handleUserUpdate = async (data) => {
@@ -53,7 +53,7 @@ const UpdateUser = () => {
     // console.log("user Updated successfully", response);
     reset();
     dispatch(modalActions.closeModal());
-    navigate("/users");
+    navigate("..");
   };
 
   return (
