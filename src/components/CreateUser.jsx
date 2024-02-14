@@ -66,12 +66,12 @@ const CreateUser = () => {
 
           <div className={classes.inputContainer}>
             <label htmlFor="username">Enter Your Username</label>
-            <input type="text" name="name" {...register("username")} />
+            <input type="text" {...register("username")} />
           </div>
 
           <div className={classes.inputContainer}>
             <label htmlFor="email">Enter Your Email</label>
-            <input type="text" name="email" {...register("email")} />
+            <input type="text" {...register("email")} />
           </div>
           <div className={classes.buttonContainer}>
             <button type="button" onClick={handleCancelSubmission}>

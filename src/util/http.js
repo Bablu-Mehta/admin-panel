@@ -37,10 +37,20 @@ export const creatingUser = async (data) => {
   }
 };
 
-
 export const fetchSingleUser = async (id) => {
   try {
-    const response = await axios(BASE_URL+id);
+    const response = await axios(BASE_URL + id);
+    return response.data;
+  } catch (error) {
+    throw new Error({
+      message: error || "Something Went Wrong while fetching the Data.",
+    });
+  }
+};
+
+export const updatingUser = async (id, data) => {
+  try {
+    const response = await axios.put(`${BASE_URL}${id}/edit`, data);
     return response.data;
   } catch (error) {
     throw new Error({

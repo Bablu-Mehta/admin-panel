@@ -1,15 +1,15 @@
 [
   {
     "id": 10,
-    "name": "againNewUser234",
-    "username": "dummy1",
-    "email": "againnewuser567@gamil.com"
+    "name": "updateduser123",
+    "username": "update123",
+    "email": "upadte123@gamil.com"
   },
   {
     "id": 12,
-    "name": "againNewUser234",
-    "username": "dummy1",
-    "email": "againnewuser567@gamil.com"
+    "name": "againNewUser",
+    "username": "dummy1234",
+    "email": "againnewuser@gamil.com"
   },
   {
     "id": 13,
