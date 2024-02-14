@@ -12,7 +12,7 @@ const Root = () => {
       {auth && (
         <div className={classes.container}>
           <SideMenu />
-          <div className={classes.outlet}>
+          <div>
             <Outlet />
           </div>
         </div>
