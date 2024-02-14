@@ -27,63 +27,54 @@ const CreateUser = () => {
 
   const dispatch = useDispatch();
 
-  // useEffect(() => {
-  //   const openModal = () => {
-  //     dispatch(modalActions.openModal());
-  //   };
-  //   openModal();
-  // }, []);
+  useEffect(() => {
+    const openModal = () => {
+      dispatch(modalActions.openModal());
+    };
+    openModal();
+  }, []);
 
-  // const handleCloseModal = () => {
-  //   dispatch(modalActions.closeModal());
-  //   // return redirect("..");
-  // };
+  const handleCancelSubmission = () => {
+    dispatch(modalActions.closeModal());
+  };
 
   const handleFormSubmission = (data) => {
-    // event.preventDefault();
-    // console.log("Form submitted successfully", event);
-    // dispatch(modalActions.closeModal());
     console.log(data);
-    // return redirect("/users");
     reset();
+    dispatch(modalActions.closeModal());
   };
 
   return (
-    // <ModalUI isOpen={open} onClose={close}>
-    //   <Stack>
-    //     <Button variant="contained" onClick={handleSubmit}>
-    //       close
-    //     </Button>
-    //   </Stack>
-    //   {/* <button>close</button>   */}
-    // </ModalUI>
+    <ModalUI isOpen={open} onClose={handleCancelSubmission}>
+      <div className={classes.container}>
+        <form
+          className={classes.form}
+          onSubmit={handleSubmit(handleFormSubmission)}
+          noValidate
+        >
+          <div className={classes.inputContainer}>
+            <label htmlFor="name">Enter Your Name</label>
+            <input type="text" {...register("name")} />
+          </div>
 
-    <div className={classes.container}>
-      <form
-        className={classes.form}
-        onSubmit={handleSubmit(handleFormSubmission)}
-        noValidate
-      >
-        <div className={classes.inputContainer}>
-          <label htmlFor="name">Enter Your Name</label>
-          <input type="text" {...register("name")} />
-        </div>
+          <div className={classes.inputContainer}>
+            <label htmlFor="username">Enter Your Username</label>
+            <input type="text" name="name" {...register("username")} />
+          </div>
 
-        <div className={classes.inputContainer}>
-          <label htmlFor="username">Enter Your Username</label>
-          <input type="text" name="name" {...register("username")} />
-        </div>
-
-        <div className={classes.inputContainer}>
-          <label htmlFor="email">Enter Your Email</label>
-          <input type="text" name="email" {...register("email")} />
-        </div>
-        <div className={classes.buttonContainer}>
-          <button type="button">Cancel</button>
-          <button type="submit">Submit Form</button>
-        </div>
-      </form>
-    </div>
+          <div className={classes.inputContainer}>
+            <label htmlFor="email">Enter Your Email</label>
+            <input type="text" name="email" {...register("email")} />
+          </div>
+          <div className={classes.buttonContainer}>
+            <button type="button" onClick={handleCancelSubmission}>
+              Cancel
+            </button>
+            <button type="submit">Submit Form</button>
+          </div>
+        </form>
+      </div>
+    </ModalUI>
   );
 };
 
