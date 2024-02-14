@@ -12,9 +12,11 @@ import { schema } from "../util/validation";
 
 import classes from "./CreateUser.module.css";
 import { creatingUser } from "../util/http";
+import { redirect, useNavigate } from "react-router-dom";
 
 const CreateUser = () => {
   const open = useSelector((state) => state.modal.isOpen);
+  const navigate = useNavigate();
 
   const {
     register,
@@ -36,6 +38,7 @@ const CreateUser = () => {
 
   const handleCancelSubmission = () => {
     dispatch(modalActions.closeModal());
+    navigate("/users");
   };
 
   const handleFormSubmission = async (data) => {
@@ -45,6 +48,7 @@ const CreateUser = () => {
     console.log("user created successfully", response);
     reset();
     dispatch(modalActions.closeModal());
+    navigate("/users");
   };
 
   return (

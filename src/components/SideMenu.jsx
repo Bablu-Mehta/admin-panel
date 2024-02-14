@@ -77,7 +77,7 @@ function SideMenu(props) {
           </ListItem>
         </Link>
 
-        <Link to="/add-user">
+        <Link to="users/add-user">
           <ListItem disablePadding>
             <ListItemButton>
               <ListItemIcon>

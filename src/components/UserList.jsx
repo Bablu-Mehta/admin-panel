@@ -8,7 +8,7 @@ import ModalUI from "../UI/ModalUI";
 import { useDispatch, useSelector } from "react-redux";
 import { modalActions } from "../store/modal-slice";
 import TableUI from "../UI/TableUI";
-import { redirect } from "react-router-dom";
+import { Outlet, redirect } from "react-router-dom";
 
 // function createData(name, userName, email) {
 //   return { name, userName, email };
@@ -40,7 +40,7 @@ const UserList = () => {
     };
 
     fetchedData();
-  }, [isUpdated]);
+  }, [isUpdated, open]);
 
   const handleConfirmation = async () => {
     if (userIdToDelete) {
@@ -50,7 +50,7 @@ const UserList = () => {
     }
     setUserIdDelete(null);
     dispatch(modalActions.closeModal());
-    return redirect("/users");
+    // return redirect("/users");
   };
 
   const handleDelete = async (id) => {
@@ -145,6 +145,7 @@ const UserList = () => {
         //   </Table>
         // </TableContainer>
       )}
+      <Outlet />
     </div>
   );
 };
