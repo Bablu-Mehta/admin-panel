@@ -9,6 +9,7 @@ import {
   TableHead,
   TablePagination,
   TableRow,
+  TextField,
 } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { fetchUser } from "../util/http";
@@ -25,6 +26,7 @@ const TableUI = ({ data, rowLenght, onDelete }) => {
   const [rows, setRows] = useState(data);
   const [page, setPage] = useState(0);
   const [rowPerPage, setRowPerPage] = useState(5);
+  const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
     const fetchedData = async () => {
@@ -44,9 +46,30 @@ const TableUI = ({ data, rowLenght, onDelete }) => {
     setPage(0);
   };
 
+  const handleSearchTermChange = (event) => {
+    setSearchTerm(event.target.value);
+  };
+
+  const filteredRows = rows.filter((row) =>
+    Object.values(row).some(
+      (value) =>
+        typeof value === "string" &&
+        value.toLowerCase().includes(searchTerm.toLowerCase())
+    )
+  );
+
   return (
     <div style={{ textAlign: "center" }}>
       <h2>Users List</h2>
+
+      {/* Search input field */}
+      <TextField
+        label="Search"
+        variant="standard"
+        value={searchTerm}
+        onChange={handleSearchTermChange}
+        style={{ marginBottom: "1rem", float: "right" }}
+      />
 
       <TableContainer component={Paper} sx={{ maxHeight: 450, maxWidth: 1200 }}>
         <Table stickyHeader>
@@ -63,8 +86,8 @@ const TableUI = ({ data, rowLenght, onDelete }) => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {rows &&
-              rows
+            {filteredRows &&
+              filteredRows
                 .slice(page * rowPerPage, page * rowPerPage + rowPerPage)
                 .map((row, index) => {
                   return (
